@@ -13,7 +13,7 @@ const Navbar = () => {
         <li>Ofertas</li>
         <li>Contacto</li>
         <li>Mi cuenta</li>
-        <li>Buscador 🔍</li>
+        <li> 🔍</li>
         <li><FaShoppingCart className="cart-icon" /></li>
       </ul>
     </nav>
