@@ -4,13 +4,16 @@ import Hero from './components/Hero';
 import Productos from './components/Productos';
 import Footer from './components/Footer';
 
+
+
+import Navbar from './components/Navbar';
+import './App.css';
+
 function App() {
   return (
     <div>
-      <Header />
-      <Hero />
-      <Productos />
-      <Footer />
+      <Navbar />
+      {/* Acá vamos a poner el Hero con la imagen grande */}
     </div>
   );
 }
