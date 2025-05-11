@@ -21,8 +21,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> b5ca36c (Primer commit)

@@ -1,3 +1,19 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 4rem;
+  position: relative;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.banner-content {
+  max-width: 600px;
+}
+
 .banner h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -20,5 +36,31 @@
 }
 
 .banner-btn:hover {
-  background-color: #8B0000;
+  background-color: #a40000;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.arrow.left {
+  left: 1rem;
+}
+
+.arrow.right {
+  right: 1rem;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
