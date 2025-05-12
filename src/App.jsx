@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 import Navbar from './components/Navbar';
 import './App.css';
-import Banner from './components/Banner'; // tu nuevo componente
+import Banner from './components/banner'; // tu nuevo componente
 
 
 

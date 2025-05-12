@@ -45,14 +45,14 @@ const Banner = () => {
     <div className="banner-container">
       <div
         className="banner-slider"
-        style={{ transform: `translateX(-${current * 100}%)` }}
+        style={{
+          transform: `translateX(-${current * 100}%)`,
+          width: `${total * 100}%`,
+        }}
       >
         {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="banner"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          >
+          <div key={index} className="banner">
+            <img src={slide.image} alt={`slide-${index}`} />
             <div className="banner-content">
               <h1>{slide.title}</h1>
               <p>{slide.text}</p>
