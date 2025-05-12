@@ -1,17 +1,32 @@
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.banner-slider {
+  display: flex;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
 .banner {
+  min-width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  height: 80vh;
   display: flex;
   align-items: center;
-  color: white;
+  justify-content: flex-start;
   padding: 0 4rem;
-  position: relative;
-  transition: background-image 0.5s ease-in-out;
+  color: white;
+  flex-shrink: 0;
 }
 
 .banner-content {
   max-width: 600px;
+  z-index: 2;
 }
 
 .banner h1 {

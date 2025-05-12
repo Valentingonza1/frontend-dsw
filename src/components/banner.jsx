@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Banner.css';
 import banner1 from '../assets/banner.jpg';
 import banner2 from '../assets/banner2.jpg';
-import banner3 from '../assets/banner3.jpg'; // Asegurate de tener 2 o 3 imágenes
+import banner3 from '../assets/banner3.jpg';
 
 const slides = [
   {
@@ -26,6 +26,13 @@ const Banner = () => {
   const [current, setCurrent] = useState(0);
   const total = slides.length;
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % total);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [total]);
+
   const nextSlide = () => {
     setCurrent((current + 1) % total);
   };
@@ -35,21 +42,35 @@ const Banner = () => {
   };
 
   return (
-    <div
-      className="banner"
-      style={{ backgroundImage: `url(${slides[current].image})` }}
-    >
-      <div className="banner-content">
-        <h1>{slides[current].title}</h1>
-        <p>{slides[current].text}</p>
-        <a href="#productos">
-          <button className="banner-btn">Ver productos</button>
-        </a>
+    <div className="banner-container">
+      <div
+        className="banner-slider"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="banner"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
+            <div className="banner-content">
+              <h1>{slide.title}</h1>
+              <p>{slide.text}</p>
+              <a href="#productos">
+                <button className="banner-btn">Ver productos</button>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-      <button className="arrow left" onClick={prevSlide}>‹</button>
-      <button className="arrow right" onClick={nextSlide}>›</button>
-      </div>
+      <button className="arrow left" onClick={prevSlide}>
+        ‹
+      </button>
+      <button className="arrow right" onClick={nextSlide}>
+        ›
+      </button>
+    </div>
   );
-};  
+};
 
 export default Banner;
