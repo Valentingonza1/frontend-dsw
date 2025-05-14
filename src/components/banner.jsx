@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Banner.css';
 import banner1 from '../assets/banner.jpg';
 import banner2 from '../assets/banner2.jpg';
@@ -13,45 +13,41 @@ const slides = [
   {
     image: banner2,
     title: 'Carnes argentinas',
-    text: 'Venta minorista de Carnes de primera calidad'
+    text: 'Venta minorista de carnes de primera calidad.'
   },
   {
     image: banner3,
     title: 'Realiza tu pedido',
-    text: 'Hace tu pedido y lo retiras directamente en el local, contamos con todos los medios de pago.'
+    text: 'Haz tu pedido y retíralo directamente en el local. Contamos con todos los medios de pago.'
   }
 ];
 
 const Banner = () => {
   const [current, setCurrent] = useState(0);
-  const total = slides.length;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [total]);
+  const [direction, setDirection] = useState('right');
 
   const nextSlide = () => {
-    setCurrent((current + 1) % total);
+    setDirection('right');
+    setCurrent((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrent((current - 1 + total) % total);
+    setDirection('left');
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
     <div className="banner-container">
-      <div
-        className="banner-slider"
-        style={{
-          transform: `translateX(-${current * 100}%)`,
-          width: `${total * 100}%`,
-        }}
-      >
-        {slides.map((slide, index) => (
-          <div key={index} className="banner">
+      {slides.map((slide, index) => {
+        let className = 'banner';
+        if (index === current) {
+          className += ` active ${direction === 'right' ? 'enter-right' : 'enter-left'}`;
+        } else {
+          className += ` ${direction === 'right' ? 'exit-left' : 'exit-right'}`;
+        }
+
+        return (
+          <div key={index} className={className}>
             <img src={slide.image} alt={`slide-${index}`} />
             <div className="banner-content">
               <h1>{slide.title}</h1>
@@ -61,14 +57,10 @@ const Banner = () => {
               </a>
             </div>
           </div>
-        ))}
-      </div>
-      <button className="arrow left" onClick={prevSlide}>
-        ‹
-      </button>
-      <button className="arrow right" onClick={nextSlide}>
-        ›
-      </button>
+        );
+      })}
+      <button className="arrow left" onClick={prevSlide}>‹</button>
+      <button className="arrow right" onClick={nextSlide}>›</button>
     </div>
   );
 };
