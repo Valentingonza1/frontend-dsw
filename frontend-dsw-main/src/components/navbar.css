@@ -54,21 +54,11 @@
   text-align: center;
   border-bottom: 1px solid #fff2;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.nav-links li:hover {
-  transform: scale(1.1);
-}
-
-/* Íconos */
-.icon {
+/* Ícono del carrito */
+.cart-icon {
   font-size: 1.2rem;
-  transition: transform 0.2s ease;
-}
-
-.icon:hover {
-  transform: scale(1.3);
 }
 
 /* Fondo oscuro al abrir menú */

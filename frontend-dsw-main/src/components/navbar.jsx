@@ -1,5 +1,6 @@
 import './Navbar.css';
-import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import React, { useState } from 'react';
 
 const Navbar = () => {
@@ -24,18 +25,19 @@ const Navbar = () => {
           <li onClick={closeMenu}>Ofertas</li>
           <li onClick={closeMenu}>Contacto</li>
           <li onClick={closeMenu}>Mi cuenta</li>
+          <li onClick={closeMenu}>🔍</li>
           <li onClick={closeMenu}>
-            <FaSearch className="icon" />
-          </li>
-          <li onClick={closeMenu}>
-            <FaShoppingCart className="icon" />
+            <FaShoppingCart className="cart-icon" />
           </li>
         </ul>
       </div>
 
+      {/* Fondo oscuro detrás del menú */}
       {menuOpen && <div className="overlay" onClick={closeMenu}></div>}
     </nav>
   );
 };
 
 export default Navbar;
+
+
