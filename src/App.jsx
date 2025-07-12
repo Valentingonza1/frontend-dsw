@@ -1,34 +1,31 @@
 import './styles/App.css';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Productos from './components/Productos';
-import Footer from './components/Footer';
-
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import './App.css';
-import Banner from './components/banner'; // tu nuevo componente
+import Hero from './components/Hero';
+import Footer from './components/Footer';
+import Banner from './components/banner';
 
-
+import Productos from './pages/Productos'; // O donde esté el archivo correcto
+// Si tenés otras páginas como Locales, Ofertas, etc., también importalas.
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
-
-      {/* Acá vamos a poner el Hero con la imagen grande */}
-      <Banner /> {/* Banner con la imagen grande y botón */}
-      <Hero />
-      <Productos />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Banner />
+            <Hero />
+          </>
+        } />
+        <Route path="/productos" element={<Productos />} />
+        {/* Agregá más rutas si hacés más páginas */}
+      </Routes>
       <Footer />
-
-    </div>
+    </Router>
   );
 }
 
 export default App;
-
-
-

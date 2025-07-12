@@ -1,6 +1,7 @@
 import './Navbar.css';
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,11 +20,21 @@ const Navbar = () => {
 
       <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
         <ul className="nav-links">
-          <li onClick={closeMenu}>Productos</li>
-          <li onClick={closeMenu}>Locales</li>
-          <li onClick={closeMenu}>Ofertas</li>
-          <li onClick={closeMenu}>Contacto</li>
-          <li onClick={closeMenu}>Mi cuenta</li>
+          <li onClick={closeMenu}>
+            <Link to="/productos">Productos</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/locales">Locales</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/ofertas">Ofertas</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/contacto">Contacto</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/cuenta">Mi cuenta</Link>
+          </li>
           <li onClick={closeMenu}>
             <FaSearch className="icon" />
           </li>
