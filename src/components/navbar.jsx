@@ -1,6 +1,8 @@
 import './Navbar.css';
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'; // asegurate de tener la imagen en esa ruta
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +13,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-header">
-        <div className="logo">Carnes argentinas</div>
+        <Link to="/" onClick={closeMenu}>
+          <img src={logo} alt="Carnes Argentinas" className="logo-img" />
+        </Link>
         <div className="menu-icon" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
@@ -19,11 +23,21 @@ const Navbar = () => {
 
       <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
         <ul className="nav-links">
-          <li onClick={closeMenu}>Productos</li>
-          <li onClick={closeMenu}>Locales</li>
-          <li onClick={closeMenu}>Ofertas</li>
-          <li onClick={closeMenu}>Contacto</li>
-          <li onClick={closeMenu}>Mi cuenta</li>
+          <li onClick={closeMenu}>
+            <Link to="/productos" className="nav-link">Productos</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/locales" className="nav-link">Locales</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/ofertas" className="nav-link">Ofertas</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/contacto" className="nav-link">Contacto</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/cuenta" className="nav-link">Mi cuenta</Link>
+          </li>
           <li onClick={closeMenu}>
             <FaSearch className="icon" />
           </li>
