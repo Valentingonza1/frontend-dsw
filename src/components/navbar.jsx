@@ -2,7 +2,10 @@ import './Navbar.css';
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import logo from '../assets/logo.png'; // asegurate de tener la imagen en esa ruta
+=======
+>>>>>>> aac2e47e68cce33916fff863b8d796190bc2f354
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +27,7 @@ const Navbar = () => {
       <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
         <ul className="nav-links">
           <li onClick={closeMenu}>
+<<<<<<< HEAD
             <Link to="/productos" className="nav-link">Productos</Link>
           </li>
           <li onClick={closeMenu}>
@@ -37,6 +41,21 @@ const Navbar = () => {
           </li>
           <li onClick={closeMenu}>
             <Link to="/cuenta" className="nav-link">Mi cuenta</Link>
+=======
+            <Link to="/productos">Productos</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/locales">Locales</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/ofertas">Ofertas</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/contacto">Contacto</Link>
+          </li>
+          <li onClick={closeMenu}>
+            <Link to="/cuenta">Mi cuenta</Link>
+>>>>>>> aac2e47e68cce33916fff863b8d796190bc2f354
           </li>
           <li onClick={closeMenu}>
             <FaSearch className="icon" />
