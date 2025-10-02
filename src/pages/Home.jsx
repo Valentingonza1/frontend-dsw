@@ -1,5 +1,10 @@
+import Banner from '../components/banner'; // tu nuevo componente
+import Hero from '../components/Hero';
 const Home = () => {
-  return <h1>Bienvenido a Carnes Argentinas</h1>;
+  return  <>
+            <Banner />
+            <Hero />
+          </>
 };
 
 export default Home;
