@@ -1,0 +1,17 @@
+[
+  { "id": 1, "name": "Asado de tira", "category": "Vacuno", "price": 8200, "unit": "kg", "image": "/images/asado.jpg" },
+  { "id": 2, "name": "Vacio", "category": "Vacuno", "price": 8900, "unit": "kg", "image": "/images/vacio.jpg" },
+  { "id": 3, "name": "Matambre", "category": "Vacuno", "price": 8400, "unit": "kg", "image": "/images/matambre.jpg" },
+  { "id": 4, "name": "Bife de chorizo", "category": "Vacuno", "price": 11800, "unit": "kg", "image": "/images/bife-chorizo.jpg" },
+  { "id": 5, "name": "Lomo", "category": "Vacuno", "price": 14900, "unit": "kg", "image": "/images/lomo.jpg" },
+  { "id": 6, "name": "Pechuga de pollo", "category": "Pollo", "price": 5200, "unit": "kg", "image": "/images/pechuga.jpg" },
+  { "id": 7, "name": "Muslo de pollo", "category": "Pollo", "price": 4600, "unit": "kg", "image": "/images/muslo.jpg" },
+  { "id": 8, "name": "Bondiola", "category": "Cerdo", "price": 7200, "unit": "kg", "image": "/images/bondiola.jpg" },
+  { "id": 9, "name": "Costillitas de cerdo", "category": "Cerdo", "price": 7800, "unit": "kg", "image": "/images/costillitas-cerdo.jpg" },
+  { "id": 10, "name": "Chorizo criollo", "category": "Embutidos", "price": 5600, "unit": "kg", "image": "/images/chorizo.jpg" },
+  { "id": 11, "name": "Morcilla", "category": "Embutidos", "price": 5100, "unit": "kg", "image": "/images/morcilla.jpg" },
+  { "id": 12, "name": "Provoleta", "category": "Anexos", "price": 4800, "unit": "unidad", "image": "/images/provoleta.jpg" },
+  { "id": 13, "name": "Achuras surtidas", "category": "Packs", "price": 9800, "unit": "pack", "image": "/images/achuras.jpg" },
+  { "id": 14, "name": "Pack Parrillero (4 pers.)", "category": "Packs", "price": 25900, "unit": "pack", "image": "/images/pack-parrillero.jpg" },
+  { "id": 15, "name": "Milanesa de nalga", "category": "Vacuno", "price": 9300, "unit": "kg", "image": "/images/milanesa.jpg" }
+]

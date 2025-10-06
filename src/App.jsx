@@ -1,14 +1,8 @@
 import './styles/App.css';
 import Header from './components/Header';
-
 import Footer from './components/Footer';
-
-
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Navbar from './components/Navbar';
-import './App.css';
 import Ofertas from './pages/Ofertas'; 
 import Locales from './pages/Locales';
 import Contacto from './pages/Contacto';
