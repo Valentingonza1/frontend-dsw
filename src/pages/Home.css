@@ -1,0 +1,60 @@
+/* Paleta */
+:root{
+  --brand: #B93232;  /* rojo marca */
+  --ink:   #545454;  /* gris texto */
+  --tone:  #E6E6E6;  /* gris claro */
+}
+
+/* Layout genérico de secciones */
+.home-section { padding: 28px 0 42px; }
+.home-section h2 { margin: 0 0 14px; color: var(--brand); text-transform: uppercase; letter-spacing: .5px; }
+
+/* Heading con link */
+.home-heading { display: flex; align-items: baseline; justify-content: space-between; }
+.link { color: var(--brand); text-decoration: none; font-weight: 600; }
+
+/* Grid de cards */
+.home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.home-card { background: #fff; border: 1px solid #eee; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: transform .25s ease, box-shadow .25s ease; }
+.home-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+.home-card-media { aspect-ratio: 4/3; background: #fafafa; }
+.home-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.home-card-body { padding: 12px; }
+.home-card-body h3 { margin: 0 0 6px; font-size: 18px; color: var(--ink); }
+.price { font-weight: 700; margin: 0 0 10px; color: var(--ink); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.step { background: #fff; border: 1px solid #eee; border-left: 6px solid var(--brand); border-radius: 14px; padding: 14px; display: flex; gap: 12px; align-items: center; box-shadow: 0 3px 8px rgba(0,0,0,.06); transition: transform .25s ease, border-color .25s ease; }
+.step:hover { transform: translateY(-4px); border-left-color: #8f1136; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 700; }
+
+/* Beneficios + CTA */
+.benefits { display: grid; gap: 14px; }
+.benefit { display: flex; gap: 12px; align-items: center; background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 12px; box-shadow: 0 3px 10px rgba(0,0,0,.05); transition: transform .3s; }
+.benefit:hover { transform: scale(1.02); }
+.benefit span { font-size: 22px; }
+
+/* CTA final */
+.cta-strip {
+  margin-top: 8px; display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(90deg, var(--brand), #e62222); color: #fff; border-radius: 14px; padding: 16px;
+  animation: fadeIn 1s ease-in-out;
+}
+.btn { display: inline-block; background: linear-gradient(90deg, var(--brand), #e62222); color: #fff; text-decoration: none; border: 0; padding: 10px 14px; border-radius: 10px; font-weight: 700; text-align: center; transition: transform .2s ease, filter .2s ease; }
+.btn:hover { transform: scale(1.05); filter: brightness(1.05); }
+.btn-strong { background: #8f1136; }
+
+/* Responsive CTA */
+@media (max-width: 720px) {
+  .cta-strip { flex-direction: column; gap: 10px; text-align: center; }
+}
+
+/* Estilo general (opcional) */
+body { background-color: #fff8f5; color: #222; font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

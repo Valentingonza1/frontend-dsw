@@ -1,0 +1,71 @@
+/* Layout base */
+:root{
+  --nav-h: 64px;
+  --nav-bg: #B93232;   /* color pedido */
+  --text: #ffffff;
+}
+
+.container{ max-width:1200px; margin:0 auto; padding:0 16px; }
+
+.navbar{
+  position: sticky; top:0; z-index:1000;
+  background: var(--nav-bg);
+  color: var(--text);
+  height: var(--nav-h);
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+
+.navbar-header{
+  height: var(--nav-h);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Logo */
+.logo img{
+  height:90px; width:auto; display:block;
+}
+
+/* Navegación (desktop) */
+.nav{ list-style:none; display:flex; align-items:center; gap:16px; margin:0; padding:0; }
+.navbar .nav-link{
+  color: var(--text); text-decoration:none;
+  font-size:.95rem; line-height:1;
+  padding:8px 10px; border-radius:8px;
+}
+.navbar .nav-link:hover{ background:rgba(255,255,255,.08); }
+
+/* Botones ícono */
+.icon-btn{
+  background:transparent; border:0; cursor:pointer;
+  color: var(--text); font-size:1rem; padding:6px; border-radius:8px;
+}
+.icon-btn:hover{ background:rgba(255,255,255,.08); }
+
+/* Hamburguesa (mobile) */
+.menu-icon{ display:none; background:transparent; border:0; color:var(--text); font-size:1.4rem; }
+
+/* Menú lateral (mobile) */
+.side-menu{
+  position:fixed; top:0; right:-100%;
+  width:78%; max-width:320px; height:100vh;
+  background:#B93232; /* igual al navbar */
+  padding:24px; transition:right .25s ease;
+  display:flex; align-items:flex-start; justify-content:flex-start;
+}
+.side-menu.open{ right:0; }
+.side-menu .nav{ flex-direction:column; gap:18px; }
+.overlay{ position:fixed; inset:0; background:rgba(0,0,0,.45); }
+
+/* Responsivo */
+.desktop{ display:flex; }
+.mobile{ display:none; }
+
+@media (max-width: 992px){
+  .desktop{ display:none; }
+  .mobile{ display:inline-flex; }
+  :root{ --nav-h: 56px; }
+  .logo img{ height:36px; }
+  .navbar .nav-link{ font-size:.95rem; padding:8px 12px; }
+}

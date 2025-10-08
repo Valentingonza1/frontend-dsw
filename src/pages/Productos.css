@@ -1,0 +1,92 @@
+/* ===== Paleta ===== */
+:root{
+  --brand:#B93232;
+  --ink:#545454;
+  --tone:#E6E6E6;
+}
+
+/* ===== Títulos y mensajes ===== */
+.t{ margin:0 0 12px 0; color:var(--ink); }
+.msg{ color:#333; margin:8px 0 16px; }
+.count{ margin:4px 0 12px; color:#666; }
+
+/* ===== Contenedor ===== */
+.catalogo { padding: 24px 0 40px; }
+
+/* ===== Filtros ===== */
+.filters{ display:flex; gap:10px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+.search{ position:relative; flex:1 1 360px; min-width:260px; }
+.search .icon{ position:absolute; left:10px; top:50%; transform:translateY(-50%); opacity:.65; }
+.search input{
+  width:100%; padding:10px 12px 10px 32px;
+  border:1px solid var(--tone); border-radius:10px; outline:none; background:#fff;
+}
+.search input:focus{ border-color:var(--brand); box-shadow:0 0 0 3px rgba(185,50,50,.12); }
+select{ padding:10px 12px; border:1px solid var(--tone); border-radius:10px; background:#fff; }
+
+/* ===== Grid y cards ===== */
+.grid{
+  display:grid; gap:18px; align-items:stretch;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.card{
+  display:flex; flex-direction:column; height:100%;
+  background:#fff; border:1px solid var(--tone);
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 6px 24px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{ transform: translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,.10); }
+
+.media{ aspect-ratio: 4/3; background:#f7f7f7; }
+.media img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.body{ padding:14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+
+/* (acotado al catálogo para no afectar el footer) */
+.catalogo .card .body h3{
+  margin:0 0 6px;
+  font-size:18px;
+  color:#222;
+}
+
+.desc{ margin:0 0 10px; color:#444; font-size:14px; min-height:38px; line-height:1.3; }
+
+/* Precio/stock abajo */
+.meta{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top:auto;
+}
+.price{ color:var(--brand); font-weight:800; font-size:18px; }
+.badge{
+  background:var(--tone); color:var(--ink);
+  padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700;
+}
+
+/* ===== Botón Agregar — MISMA ANIMACIÓN QUE ADMIN ===== */
+.card-actions{ margin-top:8px; }
+
+.btn-agregar{
+  width:100%;
+  border:0;
+  padding:12px 14px;
+  border-radius:10px;
+  background: var(--brand);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, filter .2s ease;
+  box-shadow: 0 4px 12px rgba(185,50,50,.25);
+}
+.btn-agregar:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(185,50,50,.35);
+  filter:none;
+}
+.btn-agregar:active{
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(185,50,50,.25);
+}
+.btn-agregar:disabled{
+  background:#bbb; cursor:not-allowed; filter:none; transform:none; box-shadow:none;
+}
