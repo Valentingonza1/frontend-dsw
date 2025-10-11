@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Banner from "../components/banner";
-import Hero from "../components/Hero";
 import { API_BASE } from "../services/api";
 import "./Home.css";
 
@@ -35,7 +34,6 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <Hero />
 
       <section className="home-section container">
         <div className="home-heading">

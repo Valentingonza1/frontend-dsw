@@ -1,149 +1,97 @@
-.banner-container {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
+:root{
+  --brand:#B93232;
+  --ink:#545454;
+  --mist:#E6E6E6;
 }
 
-.banner {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0;
-  transition: transform 1s ease, opacity 1s ease;
-  z-index: 0;
+.banner-wrap{
+  background:#000;   /* evita flash blanco */
+  overflow:hidden;
+}
+.banner-swiper{
+  position:relative; width:100%; height:min(68vh,640px);
 }
 
-.banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.banner-img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  will-change:transform;
 }
 
-.banner-content {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  max-width: 600px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  border-radius: 10px;
-  color: white;
-  z-index: 2;
+.swiper-slide{ background:#000; }
+
+/* Overlay para contraste */
+.banner-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
+  pointer-events:none;
 }
 
-.banner h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.banner p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  max-width: 500px;
-}
-
-.banner-btn {
-  background-color: #8B0000;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.banner-btn:hover {
-  background-color: #a40000;
-}
-
-.arrow {
+/* Texto y CTA centrados */
+.banner-cta {
   position: absolute;
   top: 50%;
+  left: 8%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  color: white;
-  background: rgba(0, 0, 0, 0.4);
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+  max-width: 480px;
+  color: #fff;
+  text-align: left;
   z-index: 10;
-  border-radius: 5px;
+}
+.banner-title {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+.banner-sub {
+  margin: 0 0 20px;
+  font-size: clamp(14px, 2.5vw, 18px);
+  line-height: 1.5;
+  color: #f0f0f0;
+  text-shadow: 0 1px 4px rgba(0,0,0,.6);
 }
 
-.arrow.left {
-  left: 1rem;
+/* Botón */
+.btn{
+  display:inline-block; border:0; border-radius:12px; padding:10px 16px;
+  font-weight:700; text-decoration:none; text-align:center; cursor:pointer;
+  background: var(--brand); color:#fff;
+  transition: transform .15s ease, filter .15s ease, background .15s ease;
+}
+.btn:hover{ transform: translateY(-1px); filter:brightness(1.05); }
+.btn-hero {
+  display: inline-block;
+  border: 2px solid var(--brand);
+  background: rgba(185,50,50,.9);
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(185,50,50,.3);
+  transition: all 0.25s ease;
 }
 
-.arrow.right {
-  right: 1rem;
+.btn-hero:hover {
+  background: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(185,50,50,.45);
 }
 
-.arrow:hover {
-  background: rgba(0, 0, 0, 0.6);
+/* Flechas */
+.swiper-button-next, .swiper-button-prev{
+  color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.5); transition:.3s;
 }
-
-/* Animaciones */
-.banner.enter-right {
-  transform: translateX(100%);
-  animation: slideInFromRight 1s forwards;
-  opacity: 1;
-  z-index: 1;
+.swiper-button-next:hover, .swiper-button-prev:hover{
+  color: var(--brand); transform: scale(1.1);
 }
-
-.banner.enter-left {
-  transform: translateX(-100%);
-  animation: slideInFromLeft 1s forwards;
-  opacity: 1;
-  z-index: 1;
-}
-
-.banner.exit-left {
-  transform: translateX(0);
-  animation: slideOutToLeft 1s forwards;
-  z-index: 0;
-}
-
-.banner.exit-right {
-  transform: translateX(0);
-  animation: slideOutToRight 1s forwards;
-  z-index: 0;
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
+@media (max-width: 768px) {
+  .banner-cta {
+    left: 6%;
+    max-width: 90%;
   }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOutToLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slideOutToRight {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
+  .banner-title {
+    font-size: clamp(22px, 6vw, 36px);
   }
 }

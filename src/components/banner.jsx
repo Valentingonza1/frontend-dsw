@@ -1,68 +1,69 @@
-import React, { useState } from 'react';
-import './Banner.css';
-import banner1 from '../assets/banner.jpg';
-import banner2 from '../assets/banner2.jpg';
-import banner3 from '../assets/banner3.jpg';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./banner.css";
+import { Link } from "react-router-dom";
+
+// Importá tus imágenes (JPG). Si además generás .webp, abajo te dejo la versión <picture/>.
+import hero1 from "../assets/banner.jpg";
+import hero2 from "../assets/banner2.jpg";
+import hero3 from "../assets/banner3.jpg";
 
 const slides = [
   {
-    image: banner1,
-    title: 'Variedad de cortes y productos',
-    text: 'Contamos con una amplia variedad de cortes, embutidos y productos de excelentísima calidad para tu disfrute.'
+    src: hero1,
+    alt: "Cortes seleccionados",
+    title: "Carnes Argentinas",
+    subtitle: "Calidad premium todos los días",
+    cta: { text: "Ver productos", to: "/productos" }
   },
   {
-    image: banner2,
-    title: 'Carnes argentinas',
-    text: 'Venta minorista de carnes de primera calidad.'
+    src: hero2,
+    alt: "Parrilla lista",
+    title: "Tu asado, sin vueltas",
+    subtitle: "Elegí, añadí al carrito y disfrutá",
+    cta: { text: "Armar pedido", to: "/productos" }
   },
   {
-    image: banner3,
-    title: 'Realiza tu pedido',
-    text: 'Haz tu pedido y retíralo directamente en el local. Contamos con todos los medios de pago.'
+    src: hero3,
+    alt: "Ofertas semanales",
+    title: "Ofertas de la semana",
+    subtitle: "Cortes seleccionados a precio especial",
+    cta: { text: "Ver ofertas", to: "/ofertas" }
   }
 ];
 
-const Banner = () => {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState('right');
-
-  const nextSlide = () => {
-    setDirection('right');
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setDirection('left');
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
+export default function Banner() {
   return (
-    <div className="banner-container">
-      {slides.map((slide, index) => {
-        let className = 'banner';
-        if (index === current) {
-          className += ` active ${direction === 'right' ? 'enter-right' : 'enter-left'}`;
-        } else {
-          className += ` ${direction === 'right' ? 'exit-left' : 'exit-right'}`;
-        }
-
-        return (
-          <div key={index} className={className}>
-            <img src={slide.image} alt={`slide-${index}`} />
-            <div className="banner-content">
-              <h1>{slide.title}</h1>
-              <p>{slide.text}</p>
-              <a href="#productos">
-                <button className="banner-btn">Ver productos</button>
-              </a>
+    <div className="banner-wrap">
+      <Swiper
+        modules={[Autoplay, Navigation]}
+        navigation
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        speed={900}
+        loop
+        slidesPerView={1}
+        spaceBetween={0}
+        className="banner-swiper"
+      >
+        {slides.map((s, i) => (
+          <SwiperSlide key={i}>
+            {/* Imagen de fondo */}
+            <img src={s.src} className="banner-img" alt={s.alt} />
+            {/* Overlay oscuro para contraste */}
+            <div className="banner-overlay" />
+            {/* Texto/CTA */}
+            <div className="banner-cta">
+              <h2 className="banner-title">{s.title}</h2>
+              <p className="banner-sub">{s.subtitle}</p>
+              <Link to={s.cta.to} className="btn btn-hero">
+                {s.cta.text}
+              </Link>
             </div>
-          </div>
-        );
-      })}
-      <button className="arrow left" onClick={prevSlide}>‹</button>
-      <button className="arrow right" onClick={nextSlide}>›</button>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
-};
-
-export default Banner;
+}
