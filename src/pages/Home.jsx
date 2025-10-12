@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Banner from "../components/banner";
 import { API_BASE } from "../services/api";
 import "./Home.css";
+import HowToBuy from "../components/howtobuy"; // <— mayúsculas
 
 const Home = () => {
   const [featured, setFeatured] = useState([]);
@@ -50,7 +51,9 @@ const Home = () => {
               <div className="home-card-body">
                 <h3>{p.name}</h3>
                 {"price" in p && (
-                  <p className="price">${Number(p.price).toLocaleString("es-AR")}</p>
+                  <p className="price">
+                    ${Number(p.price).toLocaleString("es-AR")}
+                  </p>
                 )}
                 <Link className="btn" to="/productos">Comprar</Link>
               </div>
@@ -59,25 +62,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="home-section container">
-        <h2>¿Cómo comprar?</h2>
-        <div className="steps">
-          <div className="step"><div className="step-num">1</div><p>Elegí tus cortes en <Link to="/productos">Productos</Link>.</p></div>
-          <div className="step"><div className="step-num">2</div><p>Confirmá cantidades y finalizá el pedido.</p></div>
-          <div className="step"><div className="step-num">3</div><p>Retiro en local o envío a domicilio.</p></div>
-        </div>
-      </section>
+      {/* ✅ sección moderna con pasos */}
+      <HowToBuy />
 
-      <section className="home-section container benefits">
-        <div className="benefit"><span>🥩</span><div><h3>Cortes seleccionados</h3><p>Calidad premium todos los días.</p></div></div>
-        <div className="benefit"><span>🚚</span><div><h3>Envíos en zona</h3><p>Consultá cobertura y horarios.</p></div></div>
-        <div className="benefit"><span>💳</span><div><h3>Medios de pago</h3><p>Efectivo y tarjetas.</p></div></div>
-
-        <div className="cta-strip">
-          <div><h3>¿Listo para tu asado?</h3><p>Entrá al catálogo y armá tu pedido.</p></div>
-          <Link className="btn btn-strong" to="/productos">Ver catálogo</Link>
-        </div>
-      </section>
+      {/* …resto del Home (beneficios, CTA, footer)… */}
     </>
   );
 };

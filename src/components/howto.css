@@ -1,0 +1,133 @@
+.howto {
+  background: linear-gradient(180deg, var(--tone-50) 0%, var(--tone-100) 100%);
+  padding-top: 40px;
+  padding-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.howto::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(185, 50, 50, 0.2), transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
+}
+
+.howto__head {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.howto__head h2 {
+  color: var(--brand-600);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.howto__sub {
+  margin: 8px auto 0;
+  color: var(--ink-700);
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+/* Grilla de pasos */
+.howto__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-card {
+  position: relative;
+  background: linear-gradient(145deg, var(--tone-100), #fff8f8);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  padding: 22px 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(185, 50, 50, 0.18);
+}
+
+.step-card__num {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 40px;
+  height: 40px;
+  background: var(--brand-600);
+  color: #000000;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+
+.step-card__icon {
+  width: 44px;
+  height: 44px;
+  color: var(--brand-600);
+  margin-bottom: 10px;
+}
+
+.step-card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.step-card__title {
+  margin: 0 0 6px;
+  font-weight: 800;
+  color: var(--ink-900);
+  font-size: 1.05rem;
+}
+
+.step-card__desc {
+  margin: 0;
+  color: var(--ink-700);
+  line-height: 1.5;
+  font-size: 0.93rem;
+}
+
+/* Botón final */
+.howto__cta {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+.howto__btn {
+  background: linear-gradient(90deg, #b93232, #8f2626);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 26px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 0 12px rgba(185, 50, 50, 0.35);
+  transition: all 0.25s ease;
+}
+
+.howto__btn:hover {
+    box-shadow: 0 0 18px rgba(185, 50, 50, 0.6);
+  transform: scale(1.05);
+}
