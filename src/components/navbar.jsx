@@ -1,5 +1,9 @@
 import './navbar.css';
+<<<<<<< HEAD
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+=======
+import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+>>>>>>> bce9135 (carrito listo)
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
@@ -39,8 +43,17 @@ export default function Navbar() {
             </>
           )}
 
+<<<<<<< HEAD
           <li><button className="icon-btn" aria-label="Buscar"><FaSearch /></button></li>
           <li><button className="icon-btn" aria-label="Carrito"><FaShoppingCart /></button></li>
+=======
+          {/* Carrito: ahora navega a /carrito */}
+          <li>
+            <Link to="/carrito" className="icon-btn" aria-label="Carrito">
+              <FaShoppingCart />
+            </Link>
+          </li>
+>>>>>>> bce9135 (carrito listo)
         </ul>
 
         <button className="menu-icon mobile" onClick={toggle} aria-label="Menú">

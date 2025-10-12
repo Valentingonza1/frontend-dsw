@@ -2,9 +2,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../services/api';
 import { FaSearch } from 'react-icons/fa';
+<<<<<<< HEAD
 import './Productos.css';
 
 export default function Productos() {
+=======
+import { useCart } from '../context/CartContext.jsx';
+import './Productos.css';
+
+export default function Productos() {
+  const { add } = useCart();
+
+>>>>>>> bce9135 (carrito listo)
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
@@ -16,6 +25,10 @@ export default function Productos() {
     const handler = () => load(); // refresco si Admin avisa cambios
     window.addEventListener('productos:changed', handler);
     return () => window.removeEventListener('productos:changed', handler);
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+>>>>>>> bce9135 (carrito listo)
   }, []);
 
   async function load() {
@@ -34,7 +47,10 @@ export default function Productos() {
   const filtered = useMemo(() => {
     let arr = [...items];
 
+<<<<<<< HEAD
     // filtro por texto en nombre o descripción
+=======
+>>>>>>> bce9135 (carrito listo)
     const t = q.trim().toLowerCase();
     if (t) {
       arr = arr.filter(p =>
@@ -43,7 +59,10 @@ export default function Productos() {
       );
     }
 
+<<<<<<< HEAD
     // orden
+=======
+>>>>>>> bce9135 (carrito listo)
     const num = v => Number.isFinite(Number(v)) ? Number(v) : 0;
     if (sort === 'precio-asc')  arr.sort((a, b) => num(a.precio) - num(b.precio));
     if (sort === 'precio-desc') arr.sort((a, b) => num(b.precio) - num(a.precio));
@@ -52,9 +71,13 @@ export default function Productos() {
   }, [items, q, sort]);
 
   function onAdd(prod) {
+<<<<<<< HEAD
     // Hook para tu carrito (por ahora solo demostración)
     console.log('Agregar', prod);
     // luego: dispatch al carrito, toast, etc.
+=======
+    add(prod, 1); // agrega al contexto del carrito
+>>>>>>> bce9135 (carrito listo)
   }
 
   return (
@@ -88,7 +111,14 @@ export default function Productos() {
       {/* Grid */}
       <div className="grid">
         {filtered.map(p => {
+<<<<<<< HEAD
           const sinStock = Number(p.stock) <= 0;
+=======
+          // Deshabilitar SOLO si stock es numérico y <= 0
+          const tieneStockNum = Number.isFinite(Number(p.stock));
+          const sinStock = tieneStockNum && Number(p.stock) <= 0;
+
+>>>>>>> bce9135 (carrito listo)
           return (
             <article className="card" key={p.id}>
               <div className="media">
@@ -106,7 +136,11 @@ export default function Productos() {
                   {'precio' in p && <span className="price">
                     ${Number(p.precio).toLocaleString('es-AR')}
                   </span>}
+<<<<<<< HEAD
                   {'stock' in p && <span className="badge">Stock: {p.stock}</span>}
+=======
+                  {'stock' in p && tieneStockNum && <span className="badge">Stock: {p.stock}</span>}
+>>>>>>> bce9135 (carrito listo)
                 </div>
 
                 <div className="card-actions">
