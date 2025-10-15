@@ -2,11 +2,12 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartCtx = createContext(null);
+const STORAGE_KEY = "cart";
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState(() => {
     try {
-      const raw = localStorage.getItem("cart");
+      const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
@@ -17,30 +18,36 @@ export function CartProvider({ children }) {
   const [lastError, setLastError] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(items));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    } catch {}
   }, [items]);
 
   function clearError() {
     setLastError("");
   }
 
+  // 🔧 Acepta {id, name/price/image} o {id, nombre/precio/imagen}, y opcional stock/cantidad
   function add(producto, cantidad = 1) {
     if (!producto || !producto.id) return;
-    const stock = Number.isFinite(Number(producto.stock)) ? Number(producto.stock) : Infinity;
+
+    const nombre = producto.nombre ?? producto.name ?? "";
+    const precio = Number(producto.precio ?? producto.price ?? 0);
+    const imagen = producto.imagen ?? producto.image ?? "";
+    const stockSrc = producto.stock;
+    const stock = Number.isFinite(Number(stockSrc)) ? Number(stockSrc) : Infinity;
 
     setItems((prev) => {
-      const i = prev.findIndex((x) => x.id === producto.id);
-      if (i >= 0) {
-        const current = prev[i];
+      const idx = prev.findIndex((x) => x.id === producto.id);
+      if (idx >= 0) {
+        const current = prev[idx];
         const nextQty = current.cantidad + cantidad;
-
         if (nextQty > stock) {
           setLastError("STOCK INSUFICIENTE");
-          return prev; // no aumenta si supera stock
+          return prev;
         }
-
         const copy = [...prev];
-        copy[i] = { ...current, cantidad: nextQty };
+        copy[idx] = { ...current, cantidad: nextQty };
         return copy;
       }
 
@@ -49,21 +56,12 @@ export function CartProvider({ children }) {
 
       return [
         ...prev,
-        {
-          id: producto.id,
-          nombre: producto.nombre ?? "",
-          precio: Number(producto.precio ?? 0),
-          imagen: producto.imagen ?? "",
-          stock, // guardamos stock para validar luego
-          cantidad: finalQty,
-        },
+        { id: producto.id, nombre, precio, imagen, stock, cantidad: finalQty },
       ];
     });
   }
 
-  function remove(id) {
-    setItems((prev) => prev.filter((x) => x.id !== id));
-  }
+  function remove(id) { setItems((prev) => prev.filter((x) => x.id !== id)); }
 
   function setQty(id, cantidad) {
     setItems((prev) =>
@@ -80,15 +78,20 @@ export function CartProvider({ children }) {
     );
   }
 
-  function clear() {
-    setItems([]);
-  }
+  function clear() { setItems([]); }
 
   const totalItems = useMemo(() => items.reduce((a, b) => a + b.cantidad, 0), [items]);
   const totalPrice = useMemo(
     () => items.reduce((a, b) => a + Number(b.precio) * Number(b.cantidad), 0),
     [items]
   );
+
+  const money = (n) =>
+    Number(n || 0).toLocaleString("es-AR", {
+      style: "currency",
+      currency: "ARS",
+      minimumFractionDigits: 0,
+    });
 
   const value = {
     items,
@@ -100,6 +103,7 @@ export function CartProvider({ children }) {
     totalPrice,
     lastError,
     clearError,
+    money,
   };
   return <CartCtx.Provider value={value}>{children}</CartCtx.Provider>;
 }

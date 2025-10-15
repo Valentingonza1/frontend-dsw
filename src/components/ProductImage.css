@@ -1,0 +1,32 @@
+/* contenedor con relación 4:3; ajustá según tu card */
+.pi-wrap{
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--tone-200);
+}
+
+/* shimmer/blur de carga */
+.pi-shimmer{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0) 40%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 60%),
+    var(--tone-200);
+  filter: blur(0.3px);
+  animation: pi-shine 1.2s infinite;
+  z-index: 0;
+}
+@keyframes pi-shine{
+  0%{ background-position: -200% 0, 0 0; }
+  100%{ background-position: 200% 0, 0 0; }
+}
+
+/* imagen real */
+.pi-img{
+  position:relative;
+  z-index:1;
+  width:100%; height:100%;
+  object-fit: cover;
+  display:block;
+}

@@ -2,33 +2,25 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../services/api';
 import { FaSearch } from 'react-icons/fa';
-<<<<<<< HEAD
 import './Productos.css';
-
-export default function Productos() {
-=======
 import { useCart } from '../context/CartContext.jsx';
-import './Productos.css';
+import ProductImage from "../components/ProductImage";
 
 export default function Productos() {
-  const { add } = useCart();
-
->>>>>>> bce9135 (carrito listo)
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState('');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState('relevancia'); // relevancia | precio-asc | precio-desc
 
+  // carrito
+  const { add, money, lastError, clearError } = useCart();
+
   useEffect(() => {
     load();
     const handler = () => load(); // refresco si Admin avisa cambios
     window.addEventListener('productos:changed', handler);
     return () => window.removeEventListener('productos:changed', handler);
-<<<<<<< HEAD
-=======
-    // eslint-disable-next-line react-hooks/exhaustive-deps
->>>>>>> bce9135 (carrito listo)
   }, []);
 
   async function load() {
@@ -44,13 +36,21 @@ export default function Productos() {
     }
   }
 
+  // Mostrar error del carrito (p.ej. STOCK INSUFICIENTE)
+  useEffect(() => {
+    if (!lastError) return;
+    setMsg(lastError);
+    const t = setTimeout(() => {
+      clearError();
+      setMsg('');
+    }, 2200);
+    return () => clearTimeout(t);
+  }, [lastError, clearError]);
+
   const filtered = useMemo(() => {
     let arr = [...items];
 
-<<<<<<< HEAD
     // filtro por texto en nombre o descripción
-=======
->>>>>>> bce9135 (carrito listo)
     const t = q.trim().toLowerCase();
     if (t) {
       arr = arr.filter(p =>
@@ -59,10 +59,7 @@ export default function Productos() {
       );
     }
 
-<<<<<<< HEAD
     // orden
-=======
->>>>>>> bce9135 (carrito listo)
     const num = v => Number.isFinite(Number(v)) ? Number(v) : 0;
     if (sort === 'precio-asc')  arr.sort((a, b) => num(a.precio) - num(b.precio));
     if (sort === 'precio-desc') arr.sort((a, b) => num(b.precio) - num(a.precio));
@@ -70,14 +67,20 @@ export default function Productos() {
     return arr;
   }, [items, q, sort]);
 
-  function onAdd(prod) {
-<<<<<<< HEAD
-    // Hook para tu carrito (por ahora solo demostración)
-    console.log('Agregar', prod);
-    // luego: dispatch al carrito, toast, etc.
-=======
-    add(prod, 1); // agrega al contexto del carrito
->>>>>>> bce9135 (carrito listo)
+  function onAdd(p) {
+    // Normalizamos y agregamos (el Context acepta nombre/precio/imagen o name/price/image)
+    add({
+      id: p.id,
+      nombre: p.nombre ?? p.name ?? '',
+      precio: p.precio ?? p.price ?? 0,
+      imagen: p.imagen ?? p.image ?? '/images/placeholder.jpg',
+      stock: p.stock ?? Infinity,
+    });
+    // Mensaje optimista (se sobreescribe si hay lastError)
+    if (!(Number(p.stock) <= 0)) {
+      setMsg(`${p.nombre ?? p.name} agregado al carrito`);
+      setTimeout(() => setMsg(''), 1500);
+    }
   }
 
   return (
@@ -111,36 +114,31 @@ export default function Productos() {
       {/* Grid */}
       <div className="grid">
         {filtered.map(p => {
-<<<<<<< HEAD
-          const sinStock = Number(p.stock) <= 0;
-=======
-          // Deshabilitar SOLO si stock es numérico y <= 0
-          const tieneStockNum = Number.isFinite(Number(p.stock));
-          const sinStock = tieneStockNum && Number(p.stock) <= 0;
+          const sinStock = Number(p.stock ?? 0) <= 0;
 
->>>>>>> bce9135 (carrito listo)
+          // Normalizamos la URL de imagen
+          const raw = p.imagen || '/images/placeholder.jpg';
+          const isAbs = /^https?:\/\//i.test(raw);
+          const normalized = isAbs ? raw : (raw.startsWith('/') ? raw.slice(1) : raw);
+          const alt = p.alt_text || p.nombre || 'Producto';
+
           return (
             <article className="card" key={p.id}>
               <div className="media">
-                <img
-                  src={p.imagen || '/images/placeholder.jpg'}
-                  alt={p.nombre}
-                  loading="lazy"
-                  onError={e => { e.currentTarget.src = '/images/placeholder.jpg'; }}
+                <ProductImage
+                  url={normalized}
+                  alt={alt}
+                  basePath={import.meta.env.BASE_URL}
                 />
               </div>
               <div className="body">
                 <h3>{p.nombre}</h3>
                 {p.descripcion && <p className="desc">{p.descripcion}</p>}
                 <div className="meta">
-                  {'precio' in p && <span className="price">
-                    ${Number(p.precio).toLocaleString('es-AR')}
-                  </span>}
-<<<<<<< HEAD
+                  {p.precio != null && (
+                    <span className="price">{money(Number(p.precio) || 0)}</span>
+                  )}
                   {'stock' in p && <span className="badge">Stock: {p.stock}</span>}
-=======
-                  {'stock' in p && tieneStockNum && <span className="badge">Stock: {p.stock}</span>}
->>>>>>> bce9135 (carrito listo)
                 </div>
 
                 <div className="card-actions">

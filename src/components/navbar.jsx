@@ -1,13 +1,10 @@
 import './navbar.css';
-<<<<<<< HEAD
 import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
-=======
-import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
->>>>>>> bce9135 (carrito listo)
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { isLoggedIn, logout } from '../services/auth';
+import { useCart } from '../context/CartContext.jsx';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -15,6 +12,9 @@ export default function Navbar() {
   const toggle = () => setOpen(v => !v);
   const close = () => setOpen(false);
   const doLogout = () => { logout(); close(); nav('/cuenta'); };
+
+  // ✅ del contexto: total de items en el carrito
+  const { totalItems } = useCart();
 
   return (
     <nav className="navbar">
@@ -24,13 +24,13 @@ export default function Navbar() {
         </Link>
 
         <ul className="nav desktop">
-          <li><Link to="/productos" className="nav-link">Productos</Link></li>
-          <li><Link to="/ofertas" className="nav-link">Ofertas</Link></li>
-          <li><Link to="/cuenta" className="nav-link">Mi cuenta</Link></li>
+          <li><Link to="/productos" className="nav-link" onClick={close}>Productos</Link></li>
+          <li><Link to="/ofertas" className="nav-link" onClick={close}>Ofertas</Link></li>
+          <li><Link to="/cuenta" className="nav-link" onClick={close}>Mi cuenta</Link></li>
 
           {isLoggedIn() && (
             <>
-              <li><Link to="/admin" className="nav-link">Admin</Link></li>
+              <li><Link to="/admin" className="nav-link" onClick={close}>Admin</Link></li>
               <li>
                 <button
                   onClick={doLogout}
@@ -43,17 +43,22 @@ export default function Navbar() {
             </>
           )}
 
-<<<<<<< HEAD
-          <li><button className="icon-btn" aria-label="Buscar"><FaSearch /></button></li>
-          <li><button className="icon-btn" aria-label="Carrito"><FaShoppingCart /></button></li>
-=======
-          {/* Carrito: ahora navega a /carrito */}
           <li>
-            <Link to="/carrito" className="icon-btn" aria-label="Carrito">
+            <button className="icon-btn" aria-label="Buscar"><FaSearch /></button>
+          </li>
+
+          {/* Carrito */}
+          <li>
+            <Link
+              to="/carrito"
+              className="icon-btn cart-link"
+              aria-label={`Carrito${totalItems ? `, ${totalItems} producto${totalItems>1?'s':''}` : ''}`}
+              onClick={close}
+            >
               <FaShoppingCart />
+              {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
             </Link>
           </li>
->>>>>>> bce9135 (carrito listo)
         </ul>
 
         <button className="menu-icon mobile" onClick={toggle} aria-label="Menú">
@@ -66,6 +71,7 @@ export default function Navbar() {
           <li onClick={close}><Link to="/productos" className="nav-link">Productos</Link></li>
           <li onClick={close}><Link to="/ofertas" className="nav-link">Ofertas</Link></li>
           <li onClick={close}><Link to="/cuenta" className="nav-link">Mi cuenta</Link></li>
+          <li onClick={close}><Link to="/carrito" className="nav-link">Carrito {totalItems > 0 ? `(${totalItems})` : ''}</Link></li>
 
           {isLoggedIn() && (
             <>

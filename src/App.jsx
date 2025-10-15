@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// src/App.jsx
->>>>>>> bce9135 (carrito listo)
 import './styles/App.css';
 import Footer from './components/footer.jsx';
 import Navbar from './components/navbar.jsx';
@@ -14,12 +10,10 @@ import Cuenta from './pages/Cuenta.jsx';
 import Admin from './pages/Admin.jsx';
 import AdminProductos from './pages/AdminProductos.jsx';
 import AdminClientes from './pages/AdminClientes.jsx';
-<<<<<<< HEAD
-=======
-import Carrito from './pages/Carrito.jsx';
 
+// ↓↓↓ NUEVO: provider del carrito y página Carrito
 import { CartProvider } from './context/CartContext.jsx';
->>>>>>> bce9135 (carrito listo)
+import Carrito from './pages/Carrito.jsx';
 
 function Layout() {
   return (
@@ -30,14 +24,12 @@ function Layout() {
         <Route path="/productos" element={<Productos />} />
         <Route path="/ofertas" element={<Ofertas />} />
         <Route path="/cuenta" element={<Cuenta />} />
-<<<<<<< HEAD
-=======
-        <Route path="/carrito" element={<Carrito />} />
-        {/* Admin */}
->>>>>>> bce9135 (carrito listo)
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/productos" element={<AdminProductos />} />
         <Route path="/admin/clientes" element={<AdminClientes />} />
+
+        {/* ↓↓↓ NUEVO: ruta del carrito */}
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
       <Footer />
     </>
@@ -46,14 +38,11 @@ function Layout() {
 
 export default function App() {
   return (
-    <Router>
-<<<<<<< HEAD
-      <Layout />
-=======
-      <CartProvider>
+    // ↓↓↓ NUEVO: envolver todo con el provider del carrito
+    <CartProvider>
+      <Router>
         <Layout />
-      </CartProvider>
->>>>>>> bce9135 (carrito listo)
-    </Router>
-  );
+      </Router>
+    </CartProvider>
+  );
 }
