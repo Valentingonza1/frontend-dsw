@@ -13,7 +13,7 @@
   left: -60px;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(185, 50, 50, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
   filter: blur(10px);
   z-index: 0;
 }

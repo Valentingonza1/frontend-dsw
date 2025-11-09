@@ -6,7 +6,7 @@
 }
 
 /* Layout genérico de secciones */
-.home-section { padding: 28px 0 42px; }
+.home-section { padding: 28px 0 42px; padding-top: 60px; }
 .home-section h2 { margin: 0 0 14px; color: var(--brand); text-transform: uppercase; letter-spacing: .5px; }
 
 /* Heading con link */

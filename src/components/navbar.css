@@ -8,7 +8,7 @@
 .container{ max-width:1200px; margin:0 auto; padding:0 16px; }
 
 .navbar{
-  position: sticky; top:0; z-index:1000;
+  position: relative; top:0; z-index:50;
   background: var(--nav-bg);
   color: var(--text);
   height: var(--nav-h);
@@ -38,10 +38,9 @@
 
 /* Botones ícono */
 .icon-btn{
-  background:transparent; border:0; cursor:pointer;
-  color: var(--text); font-size:1rem; padding:6px; border-radius:8px;
-}
-.icon-btn:hover{ background:rgba(255,255,255,.08); }
+  position: relative; display:inline-flex; align-items:center; gap:6px;
+  background: transparent; border:0; cursor:pointer; font-size:18px; color: var(--ink-900); }
+.icon-btn:hover{ background:rgba(255,255,255,.08);opacity:.85; }
 
 /* Hamburguesa (mobile) */
 .menu-icon{ display:none; background:transparent; border:0; color:var(--text); font-size:1.4rem; }
@@ -68,4 +67,26 @@
   :root{ --nav-h: 56px; }
   .logo img{ height:36px; }
   .navbar .nav-link{ font-size:.95rem; padding:8px 12px; }
+}
+
+.cart-link { position: relative; text-decoration: none; color: inherit; }
+
+.cart-badge{
+  position:absolute; top:-6px; right:-8px;
+  min-width:18px; height:18px; padding:0 4px;
+  border-radius:10px; background: var(--brand-600); color:#fff;
+  font-size:.72rem; line-height:18px; text-align:center; font-weight:800;
+}
+
+.overlay {
+  z-index: 40;
+}
+
+.side-menu {
+  z-index: 50;
+}
+
+.navbar {
+  position: relative;
+  z-index: 60;
 }
