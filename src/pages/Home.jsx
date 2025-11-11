@@ -42,13 +42,8 @@ const Home = () => {
   return (
     <>
       <Banner />
-
-
-      {/* ✅ sección moderna con pasos */}
       <FeaturedProducts />
       <HowToBuy />
-
-      {/* …resto del Home (beneficios, CTA, footer)… */}
     </>
   );
 };

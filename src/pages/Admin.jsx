@@ -42,7 +42,7 @@ function Style(){return(<style>{`
     box-shadow:0 6px 24px rgba(0,0,0,.06);
   }
 
-  /* MISMA ANIMACIÓN QUE EL BOTÓN "AGREGAR" DEL CATÁLOGO */
+
   .admin-card .btn{
     margin-top:auto;
     display:inline-block; text-align:center;

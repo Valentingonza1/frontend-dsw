@@ -63,7 +63,7 @@ button:hover {
   background-color: #8f0000;
 }
 
-/* Tabla */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -94,7 +94,7 @@ td button:hover {
   background-color: #8f0000;
 }
 
-/* --- Ajuste visual del campo URL --- */
+
 .form-row:last-of-type {
   display: block;
 }

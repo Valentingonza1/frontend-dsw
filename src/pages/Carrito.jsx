@@ -1,4 +1,4 @@
-// src/pages/Carrito.jsx
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
@@ -20,7 +20,7 @@ export default function Carrito() {
   const [confirmado, setConfirmado] = useState(false);
   const [nombreError, setNombreError] = useState("");
 
-  // >>> AUTO-OCULTAR ERROR A LOS 2s <<<
+
   useEffect(() => {
     if (!lastError) return;
     const t = setTimeout(() => clearError(), 2000);

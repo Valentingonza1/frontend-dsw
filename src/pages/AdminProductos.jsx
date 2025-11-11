@@ -14,7 +14,7 @@ export default function AdminProductos() {
 
   useEffect(() => {
     cargarProductos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 
   async function cargarProductos() {
@@ -52,9 +52,8 @@ export default function AdminProductos() {
     }
   }
 
-  // TOKEN ADMIN (simulado para esta app)
-  const token = "123456"; // reemplazá por el que usa tu backend si lo cambiás
 
+  const token = "123456"; 
   async function crearProducto(e) {
     e.preventDefault();
     const nuevoProducto = {

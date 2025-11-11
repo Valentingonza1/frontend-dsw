@@ -1,4 +1,4 @@
-// src/pages/Cuenta.jsx
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login, isLoggedIn, logout } from '../services/auth';
@@ -31,7 +31,7 @@ export default function Cuenta() {
     setMsg('Sesión cerrada');
   }
 
-  // Estado logueado (solo estética)
+ 
   if (isLoggedIn()) {
     return (
       <section className="auth-wrap">
@@ -44,7 +44,7 @@ export default function Cuenta() {
     );
   }
 
-  // Formulario de login (estético)
+ 
   return (
     <section className="auth-wrap">
       <div className="auth-card">

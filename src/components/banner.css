@@ -19,14 +19,14 @@
 
 .swiper-slide{ background:#000; }
 
-/* Overlay para contraste */
+
 .banner-overlay{
   position:absolute; inset:0;
   background:linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.15));
   pointer-events:none;
 }
 
-/* Texto y CTA centrados */
+
 .banner-cta {
   position: absolute;
   top: 50%;
@@ -52,7 +52,7 @@
   text-shadow: 0 1px 4px rgba(0,0,0,.6);
 }
 
-/* Botón */
+
 .btn{
   display:inline-block; border:0; border-radius:12px; padding:10px 16px;
   font-weight:700; text-decoration:none; text-align:center; cursor:pointer;
@@ -79,7 +79,7 @@
   box-shadow: 0 8px 25px rgba(185,50,50,.45);
 }
 
-/* Flechas */
+
 .swiper-button-next, .swiper-button-prev{
   color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.5); transition:.3s;
 }

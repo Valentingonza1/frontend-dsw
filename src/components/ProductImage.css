@@ -1,4 +1,4 @@
-/* contenedor con relación 4:3; ajustá según tu card */
+
 .pi-wrap{
   display:block;
   width:100%;
@@ -6,7 +6,7 @@
   border-radius:16px;     
 }
 
-/* shimmer/blur de carga */
+
 .pi-shimmer{
   position:absolute; inset:0;
   background:
@@ -21,10 +21,10 @@
   100%{ background-position: 200% 0, 0 0; }
 }
 
-/* imagen real */
+
 .pi-img{
   display:block;
   width:100%;
-  height:auto;        /* <- clave: que tome la altura natural */
+  height:auto;       
   object-fit:cover;
 }

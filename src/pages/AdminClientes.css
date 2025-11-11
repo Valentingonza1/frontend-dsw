@@ -1,0 +1,147 @@
+
+.admin-clientes {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 16px;
+}
+
+
+:root {
+  --brand: #B93232;
+  --ink: #545454;
+  --tone: #E6E6E6;
+}
+
+
+.admin-clientes .t {
+  margin: 0 0 10px 0;
+  color: var(--ink);
+}
+
+.admin-clientes .a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+
+.admin-clientes .form {
+  display: grid;
+  gap: 12px;
+  margin: 12px 0 10px 0;
+}
+
+.admin-clientes .row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.admin-clientes label {
+  display: grid;
+  gap: 6px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.admin-clientes input {
+  padding: 10px 12px;
+  border: 1px solid var(--tone);
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+}
+
+.admin-clientes input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(185, 50, 50, 0.15);
+}
+
+.admin-clientes .actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+.admin-clientes .btn {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-clientes .btn-outline {
+  padding: 10px 14px;
+  border: 1px solid var(--brand);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--brand);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+.admin-clientes .msg {
+  margin: 8px 0;
+  color: #333;
+}
+
+
+.admin-clientes .table-wrap {
+  overflow: auto;
+}
+
+.admin-clientes .tbl {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-clientes .tbl th,
+.admin-clientes .tbl td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--tone);
+}
+
+
+.admin-clientes .act {
+  display: flex;
+  gap: 6px;
+}
+
+.admin-clientes .act button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.admin-clientes .act button:hover {
+  background: #992a2a;
+  transform: scale(1.05);
+}
+
+
+.admin-clientes .act button:nth-child(2) {
+  background: #888;
+  border-color: #888;
+}
+
+.admin-clientes .act button:nth-child(2):hover {
+  background: #666;
+}
+
+
+@media (max-width: 720px) {
+  .admin-clientes .row {
+    grid-template-columns: 1fr;
+  }
+}

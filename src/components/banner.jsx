@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import "./banner.css";
 import { Link } from "react-router-dom";
 
-// Importá tus imágenes (JPG). Si además generás .webp, abajo te dejo la versión <picture/>.
+
 import hero1 from "../assets/banner.jpg";
 import hero2 from "../assets/banner2.jpg";
 import hero3 from "../assets/banner3.jpg";

@@ -11,7 +11,7 @@ import Admin from './pages/Admin.jsx';
 import AdminProductos from './pages/AdminProductos.jsx';
 import AdminClientes from './pages/AdminClientes.jsx';
 
-// ↓↓↓ NUEVO: provider del carrito y página Carrito
+
 import { CartProvider } from './context/CartContext.jsx';
 import Carrito from './pages/Carrito.jsx';
 
@@ -27,8 +27,6 @@ function Layout() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/productos" element={<AdminProductos />} />
         <Route path="/admin/clientes" element={<AdminClientes />} />
-
-        {/* ↓↓↓ NUEVO: ruta del carrito */}
         <Route path="/carrito" element={<Carrito />} />
       </Routes>
       <Footer />
@@ -38,7 +36,6 @@ function Layout() {
 
 export default function App() {
   return (
-    // ↓↓↓ NUEVO: envolver todo con el provider del carrito
     <CartProvider>
       <Router>
         <Layout />

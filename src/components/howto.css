@@ -39,7 +39,7 @@
   max-width: 500px;
 }
 
-/* Grilla de pasos */
+
 .howto__grid {
   list-style: none;
   display: grid;
@@ -108,7 +108,7 @@
   font-size: 0.93rem;
 }
 
-/* Botón final */
+
 .howto__cta {
   margin-top: 28px;
   display: flex;

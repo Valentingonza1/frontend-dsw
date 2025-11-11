@@ -1,4 +1,4 @@
-// src/context/CartContext.jsx
+
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartCtx = createContext(null);
@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
     }
   });
 
-  // último error mostrado en UI (p.ej. STOCK INSUFICIENTE)
+
   const [lastError, setLastError] = useState("");
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
     setLastError("");
   }
 
-  // 🔧 Acepta {id, name/price/image} o {id, nombre/precio/imagen}, y opcional stock/cantidad
+
   function add(producto, cantidad = 1) {
     if (!producto || !producto.id) return;
 

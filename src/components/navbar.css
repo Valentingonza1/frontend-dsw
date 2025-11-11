@@ -1,7 +1,7 @@
-/* Layout base */
+
 :root{
   --nav-h: 64px;
-  --nav-bg: #B93232;   /* color pedido */
+  --nav-bg: #B93232;   
   --text: #ffffff;
 }
 
@@ -22,12 +22,12 @@
   justify-content:space-between;
 }
 
-/* Logo */
+
 .logo img{
   height:90px; width:auto; display:block;
 }
 
-/* Navegación (desktop) */
+
 .nav{ list-style:none; display:flex; align-items:center; gap:16px; margin:0; padding:0; }
 .navbar .nav-link{
   color: var(--text); text-decoration:none;
@@ -36,20 +36,20 @@
 }
 .navbar .nav-link:hover{ background:rgba(255,255,255,.08); }
 
-/* Botones ícono */
+
 .icon-btn{
   position: relative; display:inline-flex; align-items:center; gap:6px;
   background: transparent; border:0; cursor:pointer; font-size:18px; color: var(--ink-900); }
 .icon-btn:hover{ background:rgba(255,255,255,.08);opacity:.85; }
 
-/* Hamburguesa (mobile) */
+
 .menu-icon{ display:none; background:transparent; border:0; color:var(--text); font-size:1.4rem; }
 
-/* Menú lateral (mobile) */
+
 .side-menu{
   position:fixed; top:0; right:-100%;
-  width:78%; max-width:320px; height:100vh;
-  background:#B93232; /* igual al navbar */
+  width:40%; max-width:320px; height:100vh;
+  background:#B93232; 
   padding:24px; transition:right .25s ease;
   display:flex; align-items:flex-start; justify-content:flex-start;
 }
@@ -57,7 +57,7 @@
 .side-menu .nav{ flex-direction:column; gap:18px; }
 .overlay{ position:fixed; inset:0; background:rgba(0,0,0,.45); }
 
-/* Responsivo */
+
 .desktop{ display:flex; }
 .mobile{ display:none; }
 
@@ -90,3 +90,5 @@
   position: relative;
   z-index: 60;
 }
+
+

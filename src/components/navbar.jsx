@@ -13,7 +13,7 @@ export default function Navbar() {
   const close = () => setOpen(false);
   const doLogout = () => { logout(); close(); nav('/cuenta'); };
 
-  // ✅ del contexto: total de items en el carrito
+
   const { totalItems } = useCart();
 
   return (

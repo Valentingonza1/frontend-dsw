@@ -8,7 +8,7 @@
   --card-radius:16px;
 }
 
-/* Contenedor y encabezado (mantener look) */
+
 .steps-head{
   display:flex;
   align-items:center;
@@ -33,7 +33,7 @@
   box-shadow:0 6px 14px rgba(0,0,0,.04);
 }
 
-/* GRID: 4 / 2 / 1 (exacto) */
+
 .steps-grid{
   display:grid;
   gap:20px;
@@ -73,7 +73,7 @@
   border-radius:12px;
   overflow:hidden;
   width:100%;
-  height:180px; /* altura fija consistente */
+  height:180px; 
   display:block;
   margin-bottom:12px;
 }
@@ -114,7 +114,7 @@
 }
 .steps-btn:disabled{ opacity:.6; cursor:not-allowed; }
 
-/* Mensajes */
+
 .steps-msg{ margin:8px 0 16px; color:var(--muted); font-size:.95rem; }
 
 
