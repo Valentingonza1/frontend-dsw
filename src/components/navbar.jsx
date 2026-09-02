@@ -3,7 +3,7 @@ import { FaSearch, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import { isLoggedIn, logout } from '../services/auth';
+import { isLoggedIn, logout, isAdmin } from '../services/auth';
 import { useCart } from '../context/CartContext.jsx';
 
 export default function Navbar() {
@@ -28,9 +28,9 @@ export default function Navbar() {
           <li><Link to="/ofertas" className="nav-link" onClick={close}>Ofertas</Link></li>
           <li><Link to="/cuenta" className="nav-link" onClick={close}>Mi cuenta</Link></li>
 
-          {isLoggedIn() && (
-            <>
-              <li><Link to="/admin" className="nav-link" onClick={close}>Admin</Link></li>
+          {isAdmin() && (
+  <>
+    <li><Link to="/admin" className="nav-link" onClick={close}>Admin</Link></li>
               <li>
                 <button
                   onClick={doLogout}
